@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Manul Kombat</title>
+    <!-- РџРћР”РљР›Р®Р§РђР•Рњ РЎР”Рљ Р’РљРћРќРўРђРљРўР• (VK BRIDGE) -->
+    <script src="https://unpkg.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="meme-background"></div>
+
+    <div class="game-container">
+        <div class="balance-container">
+            <span class="coin-icon">&#129689;</span>
+            <span id="balance-text">0</span>
+        </div>
+        <div class="stats-text" id="stats-text">&#1050;&#1083;&#1080;&#1082;: +1 | &#1042; &#1089;&#1077;&#1082;&#1091;&#1085;&#1076;&#1091;: +0</div>
+
+        <div class="evolution-panel">
+            <div class="evolution-heading">
+                <span id="evolution-name">Дикий манул</span>
+                <span>LVL <span id="evolution-level">1</span></span>
+            </div>
+            <div class="evolution-xp-row">
+                <span>ОПЫТ</span>
+                <span id="evolution-xp">0 / 100</span>
+            </div>
+            <div class="evolution-track">
+                <div id="evolution-bar" class="evolution-bar"></div>
+            </div>
+            <div id="next-evolution" class="next-evolution">
+                Следующая форма: Боевой манул — уровень 5
+            </div>
+        </div>
+
+        <div class="manul-clicker-container">
+            <div class="circle-glow"></div>
+            <div id="manul-button" class="manul-character"></div>
+        </div>
+
+        <div class="shop-container">
+            <button id="btn-click" class="upgrade-btn btn-blue">
+                <span class="btn-title">вљЎ РџСЂРѕРєР°С‡Р°С‚СЊ РљР»РёРє (Р›РІР» <span id="lbl-click-lvl">1</span>)</span>
+                <span class="btn-price">&#1062;&#1077;&#1085;&#1072;: <span id="lbl-click-cost">10</span></span></span>
+            </button>
+            
+            <button id="btn-farm" class="upgrade-btn btn-green">
+                <span class="btn-title">рџ–ҐпёЏ РљСѓРїРёС‚СЊ Р¤РµСЂРјСѓ (Р›РІР» <span id="lbl-farm-lvl">0</span>)</span>
+                <span class="btn-price">&#1062;&#1077;&#1085;&#1072;: <span id="lbl-farm-cost">50</span></span></span>
+            </button>
+            
+            <button id="btn-ad" class="upgrade-btn btn-gold">
+                <span class="btn-title">&#127916; &#1041;&#1086;&#1085;&#1091;&#1089;: +500 &#1084;&#1086;&#1085;&#1077;&#1090;</span>
+                <span class="btn-price">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РІРёРґРµРѕСЂРѕР»РёРє</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
+
+
+

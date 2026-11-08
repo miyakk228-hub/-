@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a111a">
+  <meta name="application-name" content="MANUL KOMBAT">
+  <meta name="description" content="MANUL KOMBAT — арена манула, прокачка и сражения">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>MANUL KOMBAT — Арена</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+</head>
+<body>
+  <main class="game-container">
+    <header class="topbar">
+      <div><div class="eyebrow">ARENA • CLICKER RPG</div><h1>MANUL <span>KOMBAT</span></h1></div>
+      <button id="install-app" class="small-btn install-app-btn" type="button" hidden>⬇ Установить приложение</button>
+      <div class="wallet">
+        <span>🪙 <b id="balance-text">0</b></span>
+        <span>💎 <b id="crystal-count">0</b></span>
+        <span>♻️ <b id="prestige-count">0</b></span>
+      </div>
+    </header>
+
+    <section class="hero-grid">
+      <section class="panel main-stage">
+        <div class="section-heading" style="width:100%"><div><div class="eyebrow">ТВОЙ БОЕЦ</div><h2>Арена манула</h2></div><div class="heading-icon">⚔️</div></div>
+        <div class="evolution-panel">
+          <div class="evolution-heading"><span id="evolution-name">Дикий манул</span><span>LVL <span id="evolution-level">1</span></span></div>
+          <div class="evolution-xp-row"><span>ОПЫТ</span><span id="evolution-xp">0 / 100</span></div>
+          <div class="evolution-track"><div id="evolution-bar" class="evolution-bar"></div></div>
+          <div id="next-evolution" class="next-evolution">Следующая форма: Боевой манул — уровень 5</div>
+        </div>
+        <div class="manul-clicker-container"><div class="circle-glow"></div><button id="manul-button" class="manul-character" type="button" aria-label="Ударить манула"></button></div>
+        <div class="tap-hint">НАЖИМАЙ НА МАНУЛА, ЧТОБЫ АТАКОВАТЬ</div>
+        <div class="stats-text" id="stats-text">Клик: +1 | В секунду: +0</div>
+      </section>
+
+      <aside class="panel upgrades-panel">
+        <div class="section-heading"><div><div class="eyebrow">ПРОКАЧКА</div><h2>Улучшения</h2></div><div class="heading-icon">⚡</div></div>
+        <div class="shop-container">
+          <button id="btn-click" class="upgrade-btn btn-blue" type="button"><span class="btn-title">⚡ Улучшить удар · ур. <span id="lbl-click-lvl">1</span></span><span class="btn-price">Цена: <span id="lbl-click-cost">10</span> монет</span></button>
+          <button id="btn-farm" class="upgrade-btn btn-green" type="button"><span class="btn-title">🏭 Купить ферму · ур. <span id="lbl-farm-lvl">0</span></span><span class="btn-price">Цена: <span id="lbl-farm-cost">50</span> монет</span></button>
+          <button id="btn-ad" class="upgrade-btn btn-gold" type="button"><span class="btn-title">🎬 Бонус за рекламу · +200</span><span class="btn-price">До 3 бонусов в день</span></button>
+        </div>
+        <div class="mini-stat-row"><span>Сила удара</span><b id="power-stat">растёт с улучшениями</b></div>
+        <div class="mini-stat-row"><span>Пассивный доход</span><b>монеты / сек.</b></div>
+        <button id="btn-ad-boost" class="primary-btn" type="button">🚀 Удвоить доход на 5 минут</button>
+        <p class="muted">Монеты — внутриигровая валюта. Они не являются рублями и не обмениваются на реальные деньги.</p>
+      </aside>
+    </section>
+
+    <section class="feature-grid">
+      <section class="panel"><div class="section-heading"><div><div class="eyebrow">ЕЖЕДНЕВНО</div><h2>Задания</h2></div><div class="heading-icon">📜</div></div><div id="quests-list" class="stack-list"></div></section>
+      <section class="panel"><div class="section-heading"><div><div class="eyebrow">КОЛЛЕКЦИЯ</div><h2>Облики манула</h2></div><div class="heading-icon">🎭</div></div><div id="skins-list" class="stack-list"></div><button id="buy-crystals" class="primary-btn" type="button">Обменять 25 000 монет на 1 💎</button><button id="buy-vip-effect" class="primary-btn secondary-btn" type="button">Открыть VIP-эффект · 6 💎</button></section>
+      <section class="panel boss-panel"><div class="section-heading"><div><div class="eyebrow">ОСОБОЕ СРАЖЕНИЕ</div><h2>Страж арены</h2></div><div class="heading-icon">👹</div></div><div class="boss-avatar">🗿</div><p class="muted">Наноси урон боссу каждым кликом или отдельной атакой.</p><div class="boss-health"><div id="boss-bar"></div></div><div id="boss-hp" class="muted">1200 / 1200 HP</div><p class="muted">Побед: <b id="boss-kills">0</b></p><button id="boss-attack" class="primary-btn" type="button">⚔️ Атаковать босса</button></section>
+      <section class="panel"><div class="section-heading"><div><div class="eyebrow">ДОЛГАЯ ПРОКАЧКА</div><h2>Боевой пропуск</h2></div><div class="heading-icon">🎁</div></div><div id="pass-level" class="pass-level-label">Уровень пропуска 1 / 10</div><div class="evolution-track"><div id="pass-bar" class="evolution-bar"></div></div><div id="pass-rewards" class="pass-rewards"></div><button id="btn-pass-premium" class="primary-btn secondary-btn" type="button">Открыть премиум-ветку · 15 💎</button></section>
+      <section class="panel"><div class="section-heading"><div><div class="eyebrow">СТАТИСТИКА</div><h2>Профиль бойца</h2></div><div class="heading-icon">📊</div></div><div class="profile-grid">
+        <div><small>Всего кликов</small><b id="profile-clicks">0</b></div><div><small>Заработано монет</small><b id="profile-earned">0</b></div><div><small>Побед над боссом</small><b id="profile-bosses">0</b></div><div><small>Перерождения</small><b id="profile-prestige">0</b></div><div><small>Кристаллы</small><b id="profile-crystals">0</b></div><div><small>Уровень манула</small><b id="profile-level">1</b></div><div><small>Время в игре</small><b id="profile-playtime">0 мин.</b></div></div><button id="btn-prestige" class="primary-btn secondary-btn" type="button">♻️ Перерождение (с 100 уровня)</button><div class="save-tools"><button id="export-save" class="small-btn" type="button">⬇ Экспорт сохранения</button><button id="import-save-trigger" class="small-btn" type="button">⬆ Импорт сохранения</button><button id="reset-save" class="small-btn danger-btn" type="button">Сбросить прогресс</button><input id="import-save-file" type="file" accept="application/json,.json" hidden></div></section>
+      <section class="panel"><div class="section-heading"><div><div class="eyebrow">НАГРАДЫ</div><h2>Достижения</h2></div><span id="achievement-count" class="count-pill">0 / 32</span></div><div id="achievements-list" class="achievement-list"></div></section>
+    </section>
+    <footer>MANUL KOMBAT <span>•</span> VERSION 2.3.3</footer>
+  </main>
+  <script src="pwa.js"></script>
+  <script src="game.js"></script>
+  <script src="features.js"></script>
+  <script src="animations.js"></script>
+  <script src="achievements.js"></script>
+  <script src="save-manager.js"></script>
+</body>
+</html>

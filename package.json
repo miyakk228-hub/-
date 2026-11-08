@@ -1,0 +1,55 @@
+{
+  "name": "manul-kombat",
+  "version": "2.3.3",
+  "description": "MANUL KOMBAT — original idle clicker RPG",
+  "main": "main.js",
+  "author": "MANUL KOMBAT",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check game.js && node --check features.js && node --check achievements.js && node --check animations.js && node --check pwa.js && node --check main.js",
+    "dist": "electron-builder --win nsis portable",
+    "dist:installer": "electron-builder --win nsis",
+    "dist:portable": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.manulkombat.desktop",
+    "productName": "MANUL KOMBAT",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "style.css",
+      "game.js",
+      "features.js",
+      "achievements.js",
+      "pwa.js",
+      "service-worker.js",
+      "manifest.webmanifest",
+      "icon.svg",
+      "icon.ico",
+      "main.js",
+      "animations.js",
+      "save-manager.js"
+    ],
+    "win": {
+      "icon": "icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MANUL KOMBAT"
+    }
+  }
+}
